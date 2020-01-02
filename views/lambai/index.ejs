@@ -1,0 +1,254 @@
+<html>
+
+<head>
+    <title>Code Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="plugin/codemirror/lib/codemirror.css">
+    <!-- theme -->
+    <link rel="stylesheet" href="plugin/codemirror/theme/3024-day.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/3024-night.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/abcdef.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/ambiance.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/base16-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/bespin.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/base16-light.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/blackboard.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/cobalt.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/colorforth.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/dracula.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/duotone-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/duotone-light.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/eclipse.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/elegant.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/erlang-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/gruvbox-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/hopscotch.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/icecoder.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/isotope.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/lesser-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/liquibyte.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/lucario.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/material.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/mbo.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/mdn-like.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/midnight.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/monokai.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/neat.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/neo.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/night.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/nord.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/oceanic-next.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/panda-syntax.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/paraiso-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/paraiso-light.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/pastel-on-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/railscasts.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/rubyblue.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/seti.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/shadowfox.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/solarized.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/the-matrix.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/tomorrow-night-bright.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/tomorrow-night-eighties.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/ttcn.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/twilight.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/vibrant-ink.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/xq-dark.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/xq-light.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/yeti.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/idea.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/darcula.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/yonce.css">
+    <link rel="stylesheet" href="plugin/codemirror/theme/zenburn.css">
+</head>
+
+<body>
+    <!-- javascript -->
+    <script src="../trangchu/deepCompare.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/lib/codemirror.js"></script>
+    <!-- mode -->
+    <script type="text/javascript" src="plugin/codemirror/mode/pascal/pascal.js"></script>
+    <script type="text/javascript" src="plugin/codemirror/mode/clike/clike.js"></script> <!-- C, C++,C# -->
+    <script type="text/javascript" src="plugin/codemirror/mode/python/python.js"></script> <!-- python -->
+    <!-- config -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"></script>
+    <script type="text/javascript" src="client.js"></script>
+    <script src="style.js"></script>
+    <script type="text/javascript">
+    var socket = io();
+
+    function getText() {
+        $('#code-submit').val(escape(editor.getValue()));
+    }
+    var _file;
+
+    async function popup() {
+        const { value: file } = await Swal.fire({
+            title: 'Nộp bài bằng file',
+            input: 'file',
+            inputAttributes: {
+                accept: '.pas, .cpp',
+                'aria-label': 'Chọn file code của bạn'
+            }
+        })
+
+        if (file) {
+            var filename = file.name.toLowerCase();
+            var type = filename.match(/^.*?\.(pas|cpp)$/);
+            if (type == null) {
+                Swal.fire({
+                    title: "Hãy là người nộp file có não!!",
+                    text: "Nộp file " + file.type + " làm gì :)",
+                    type: "error"
+                })
+            } else
+            if (file.size > 5 * 1024 * 1024) {
+                Swal.fire({
+                    title: "Lỗi!!",
+                    text: "Code gì 5mb hay vậy :)",
+                    type: "error"
+                })
+            } else {
+                const fileReader = new FileReader();
+                fileReader.onload = progressEvent => {
+                    $.post("", { way: "file", id: /(.*)\./.exec(filename)[1], code: escape(fileReader.result), codetype: /^.*?\.(pas|cpp)$/.exec(filename)[1] || 'pas'}, data => {
+                        Swal.fire(data);
+                    })
+                }
+                fileReader.readAsText(file, "UTF-8");
+            }
+        }
+    }
+    </script>
+
+    <% if (idcacbai) {%>
+    <div id="idcacbai" class="center">
+        <table class="table" id="idcacbai">
+            <tr>
+                <th>STT</th>
+                <th>Mã bài</th>
+                <th>Tên bài</th>
+                <th></th>
+            </tr>
+        <% let stt=0; for (var i in idcacbai) {stt++; %>
+            <tr>
+                <td><%= stt %></td>
+                <td><%= i %></td>
+                <td><%= idcacbai[i] %></td>
+                <td><input onclick = "window.open('../bai/<%= i %>.pdf')" type="submit" value="Xem đề" class="button"></td>
+            </tr>
+        <% } %>
+        </table>
+    </div>
+    <% } %>
+
+    <div id="codeEditor">
+        <textarea class="codemirror-textarea"></textarea>
+        <div>
+            <form method="POST">
+                <br>
+                <div>
+                    <input id="code-submit" type="text" name="code" style="display: none" required>
+                </div>
+                <div class="center">
+                    <div class="container">
+                          <div class="dropdown">
+                            <div class="select">
+                              <span>Cấu hình bộ dịch</span>
+                              <i class="fa fa-chevron-left"></i>
+                            </div>
+                            <input type="hidden" name="codetype" value="pas">
+                            <ul class="dropdown-menu">
+                              <li id="pascal">Pascal (.pas)</li>
+                              <li id="clike">C, C++ (.cpp)</li>
+                              <li id="java">Java (.jav)</li>
+                              <li id="python">Python (.py)</li>
+                            </ul>
+                          </div>
+                    </div>
+                    <div class="center" style="width:50%">
+                    <label for="inp" class="inp">
+                        <input type="text" id="inp" name="id" placeholder="&nbsp;" required="">
+                        <span class="label">Nhập mã bài</span>
+                        <span class="border"></span>
+                    </label>
+                    </div>
+                </div><br>
+                <div class="center">
+                    <input style="display: none" name="way" value="normal">
+                    <input onclick="getText()" class="button" value="Nộp bài!!!" type="submit">
+                </div>
+            </form>
+        </div>
+        <div onclick="popup()" class="noselect" id="sendFileWay" align="center">
+            <p>+</p>
+        </div>
+        <div id="chambaiCont" class="center">
+            <table class="center table" id="nopbai">
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    var last;
+    var socket = io();
+
+    var code, editor, contestReg = "<%= contestReg %>";
+
+    $(document).ready(function() {
+        code = $('.codemirror-textarea')[0];
+        editor = CodeMirror.fromTextArea(code, {
+            lineNumbers: true,
+            theme: "abcdef",
+            tabSize: 8,
+            styleActiveLine: true,
+            matchBrackets: true,
+            mode: "pascal"
+        })
+        editor.setSize(window.innerWidth*98/100, window.innerHeight * 75 / 100);
+        console.log(editor)
+        var c = unescape("<%= cookieCode %>");
+        editor.setValue(unescape(c));
+        $(window).resize(function() {
+            editor.setSize(window.innerWidth*98  /100, window.innerHeight * 75 / 100);
+        })
+    });
+
+    socket.on('nopbai_table', data => {
+        if (deepCompare(data, last))
+            return;
+        var html = "<tbody><tr id='thead'><th>User</th><th>Mã Bài</th><th>ĐIểm</th></tr>";
+        for (var i in data) {
+            html = html + `<tr><td><p>${data[i].username}</p></td><td><p>${data[i].mabai}</p></td><td><p>` + (data[i].status == 0 ? "Đang chờ chấm" : (data[i].status == 1 ? "Đang chấm" : (data[i].status == 2 ? (data[i].diem==100?"<b style='corlor: green'>Accepted</b>":data[i].diem) : "Dịch lỗi!!"))) + `</p></td></tr>`;
+        }
+        html = html + '</tbody>';
+        $('#nopbai').html(html);
+        last = data;
+    })
+
+    socket.on('contest_end', id=>{
+        if (contestReg == id){
+            Swal.fire({
+                title: "Thông báo",
+                text: "Contest "+id+" đã kết thúc! Trở về trang chủ?",
+                type: "info",
+                confirmButtonText: 'Ô cê',
+                cancelButtonText: "nuu :<",
+                showCancelButton: true,
+                allowOutsideClick: false
+            }).then((result) => {
+                if (result.value) {
+                  window.location.assign("../bangxephang");
+              }
+            })
+        }
+    })
+    </script>
+</body>
+
+</html>

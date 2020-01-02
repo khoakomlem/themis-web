@@ -1,0 +1,171 @@
+-- phpMyAdmin SQL Dump
+-- version 4.9.0.1
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: Nov 15, 2019 at 02:00 PM
+-- Server version: 10.4.6-MariaDB
+-- PHP Version: 7.3.9
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `themis`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `contest`
+--
+
+CREATE TABLE `contest` (
+  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL DEFAULT 'New contest',
+  `id` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `debai1` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `debai2` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `debai3` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `debai4` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `idcacbai` text COLLATE utf8_unicode_ci NOT NULL,
+  `time_start` datetime NOT NULL DEFAULT current_timestamp(),
+  `time_end` datetime DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `contest`
+--
+
+INSERT INTO `contest` (`name`, `id`, `debai1`, `debai2`, `debai3`, `debai4`, `idcacbai`, `time_start`, `time_end`) VALUES
+('New contest', 'cc', 'a', 'b', 'c', '', 'a b c', '2019-11-13 20:04:10', '2019-11-13 20:04:17'),
+('Con test của khoa đẹp trai', 'lolbinhaudam', 'vector', 'lminmax', 'silk', '', 'vector lminmax silk', '2019-11-13 20:20:00', '2019-11-13 23:20:00'),
+('New contest2', 'niggawibu', 'two', 'three', 'nigga', 'onthetree', 'two three nigga onthetree', '2019-11-14 16:02:09', '2019-11-14 16:07:00');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `member_dtb`
+--
+
+CREATE TABLE `member_dtb` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `password` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `email` varchar(200) COLLATE utf8_unicode_ci NOT NULL,
+  `code` varchar(32) COLLATE utf8_unicode_ci NOT NULL,
+  `contest` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `member_dtb`
+--
+
+INSERT INTO `member_dtb` (`id`, `username`, `password`, `email`, `code`, `contest`) VALUES
+(1, 'khoa', 'e8ed38edd226e6d0bb0f65e07d8f3f55', 'visualpascalc@gmail.com', '163c1e3d5612775baf9a89d5790b1f73', ''),
+(2, 'shin3030aa', 'c657a8ebb148b7c93f8a569eed191d1f', 'thanh14022004a@gmail.com', 'a6c248beddf6e7927e41418683cbcb37', ''),
+(3, 'naruto270504', '0334965b5cf2a6b71d0e571d534e42f7', 'zerdinblade270504@gmail.com', '466d446baf7e4149edf2911b38279c1a', ''),
+(4, 'vanz', '0cc175b9c0f1b6a831c399e269772661', 'landuyen2010@gmail.com', 'b5ccc947092d5198f54590d0f4a44d72', ''),
+(5, 'sidateo', '33747a5fbb374328fdc7c2df7ceb1a4f', 'thanhthaofirecrush@gmail.com', 'de6489457e29cdf0b6f42e523a1c1db4', ''),
+(6, 'hoangchisi', '73e62b2eecc723f39bbfa63987203218', 'chisi482004@gmail.com', '4a69c72f178c4bb41cd7ce03edc92580', ''),
+(7, 'Fidisk', '25888cefa6a75f023b32cf891705b0c8', 'lecuongvan2004@gmail.com', '43f7b8bb11030155265766e3b1be0dfe', ''),
+(8, 'TranQuan', '4d63a98691bee2c00f27c7fbccf31a10', 'zwk93014@bcaoo.com', '1961cd3a4cf4436c65b63a5c29a0148b', ''),
+(9, 'minhquoc19ti', '14251cfd86f29836ae3b0e0b571e8d9c', 'nguyenngocminhquocp@gmail.com', '8abcb72ab306901b905e031721bef29a', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nopbai`
+--
+
+CREATE TABLE `nopbai` (
+  `id` bigint(20) NOT NULL,
+  `username` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `status` tinyint(4) NOT NULL,
+  `mabai` varchar(50) COLLATE utf8_unicode_ci NOT NULL,
+  `diem` tinyint(4) NOT NULL,
+  `idClient` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
+  `thoigiannop` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `nopbai`
+--
+
+INSERT INTO `nopbai` (`id`, `username`, `status`, `mabai`, `diem`, `idClient`, `thoigiannop`) VALUES
+(1, 'sidateo', 2, 'LMINMAX', 80, '1sidateoLMINMAX', '2019-11-13 20:49:27'),
+(2, 'sidateo', 2, 'silk', 100, '2sidateosilk', '2019-11-13 20:49:40'),
+(3, 'sidateo', 2, 'LMINMAX', 98, '3sidateoLMINMAX', '2019-11-13 20:52:43'),
+(4, 'shin3030aa', 2, 'lminmax', 23, '4shin3030aalminmax', '2019-11-13 20:53:07'),
+(5, 'Fidisk', 2, 'vector', 100, '5Fidiskvector', '2019-11-13 21:02:33'),
+(6, 'vanz', 2, 'vector', 29, '6vanzvector', '2019-11-13 21:02:57'),
+(7, 'naruto270504', 2, 'lminmax', 23, '7naruto270504lminmax', '2019-11-13 21:35:08'),
+(8, 'naruto270504', 3, 'lminmax', 0, '8naruto270504lminmax', '2019-11-13 21:35:18'),
+(9, 'hoangchisi', 2, 'lminmax', 53, '9hoangchisilminmax', '2019-11-13 21:43:47'),
+(10, 'minhquoc19ti', 2, 'vector', 0, '10minhquoc19tivector', '2019-11-13 22:10:01'),
+(11, 'Fidisk', 2, 'lminmax', 58, '11Fidisklminmax', '2019-11-13 22:30:27'),
+(12, 'minhquoc19ti', 3, 'lminmax', 0, '12minhquoc19tilminmax', '2019-11-13 22:31:46'),
+(13, 'minhquoc19ti', 2, 'lminmax', 0, '13minhquoc19tilminmax', '2019-11-13 22:34:27'),
+(14, 'minhquoc19ti', 2, 'lminmax', 0, '14minhquoc19tilminmax', '2019-11-13 22:35:09'),
+(15, 'Fidisk', 2, 'silk', 0, '15Fidisksilk', '2019-11-13 22:58:18'),
+(16, 'khoa', 0, 'two', 0, '16khoatwo', '2019-11-14 16:03:27');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `uutien`
+--
+
+CREATE TABLE `uutien` (
+  `ma` bigint(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `member_dtb`
+--
+ALTER TABLE `member_dtb`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nopbai`
+--
+ALTER TABLE `nopbai`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `uutien`
+--
+ALTER TABLE `uutien`
+  ADD PRIMARY KEY (`ma`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `member_dtb`
+--
+ALTER TABLE `member_dtb`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `nopbai`
+--
+ALTER TABLE `nopbai`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

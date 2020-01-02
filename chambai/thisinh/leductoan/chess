@@ -1,0 +1,45 @@
+/* NTD214 */
+#include<bits/stdc++.h>
+typedef long long ll;
+typedef unsigned long long ull;
+#define cl cout<<endl
+#define For(i,a,b) for (int i=a; i<=b; i++)
+#define Forr(i,a,b) for (int i=a; i<b; i++)
+#define Refor(i,a,b) for (int i=a; i>=b; i--)
+#define Reforr(i,a,b) for (int i=a; i>b; i--)
+#define pb push_back
+#define vi vector<int>
+#define _io ios_base::sync_with_stdio(false); cin.tie(0); cout.tie(0);
+#define PROB "c"
+using namespace std;
+int n;
+void init()
+{
+    freopen(PROB".inp","r",stdin);
+    freopen(PROB".out","w",stdout);
+}
+void readdata()
+{
+        cin>>n;
+        if (n%2==0)
+        {
+            cout<<"NO";
+            exit(0);
+        }
+}
+void solve()
+{
+    if (n==3)
+    {
+        cout<<"YES"<<endl;
+        cout<<"1 4 5 2 3 6";
+    }
+    else cout<<"NO";
+}
+int main()
+{
+    init();
+    readdata();
+    solve();
+}
+

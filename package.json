@@ -1,0 +1,25 @@
+{
+  "name": "themis",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "chokidar": "^3.0.2",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^2.6.2",
+    "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "md5": "^2.2.1",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.1",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

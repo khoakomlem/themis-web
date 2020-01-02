@@ -1,0 +1,76 @@
+<!--Author: W3layouts
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>Login - Themis web</title>
+    <script src="js/jquery.min.js"></script>
+    <!-- Custom Theme files -->
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- for-mobile-apps -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <!-- <script src="https://cdn.jsdelivr.net/npm/ejs@2.6.2/lib/ejs.min.js"></script> -->
+    <!-- <meta name="keywords" content="Classy Login form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" /> -->
+    <!-- SEO -->
+    <!-- //for-mobile-apps -->
+    <!--Google Fonts-->
+    <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!--header start here-->
+    <div class="header">
+        <div class="header-main">
+            <h1><%= msg %></h1>
+            </h1>
+            <div class="header-bottom">
+                <div class="header-right w3agile">
+                    <div class="header-left-bottom agileinfo">
+                        <form method="POST">
+                        <input id="user" type="text" value="Tên tài khoản" name="username" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'User name';}" />
+                        <input id="pass" type="password" value="Mật khẩu" name="password" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'password';}" />
+                        <div class="remember">
+                            <input name="remember" value='true' type="checkbox" />Remember me?<br>
+                            <div class="forgot">
+                                <h6><a href="/register">Đăng kí ở đây!</a></h6>
+                            </div>
+                            <div class="clear"> </div>	
+                        </div>
+                        <input type="submit" id="submit-login" value="Đăng nhập">
+                    </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--header end here-->
+    <div class="copyright">
+        <p>© 2016 Classy Login Form. Bảo lưu mọi quyền | Thiết kế bởi <a href="http://w3layouts.com/" target="_blank"> W3layouts </a></p>
+    </div>
+    <!--footer end here-->
+    <script>
+    $(document).ready(() => {
+    	// var timeout;
+     //    $('#submit-login').click(() => {
+     //        $.post('', { user: $('#user').val(), pass: $('#pass').val() }).done(data => {
+     //        	if (data==='done'){
+     //        		window.location.replace("../themis");
+     //        		return;
+     //        	}
+     //            $('#top').html(data);
+     //            $('#top').slideDown();
+     //            clearTimeout(timeout);
+     //            timeout = setTimeout(()=>$('#top').slideUp(), 1000);
+     //        })
+     //    })
+    })
+    </script>
+</body>
+
+</html>

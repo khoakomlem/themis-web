@@ -1,0 +1,299 @@
+.container{
+
+}
+
+.codemirror-textarea{
+	width: 100%;
+}
+
+#chambaiCont{
+	position: relative;
+	top: 100px;
+}
+
+#chambaiCont td{
+  height: 40px;
+  width: 300px;
+}
+
+#chambaiCont th{
+  font-size: 22px;
+  height: 50px;
+}
+
+#idcacbai th{
+  font-size: 15px;
+  height: 40px;
+}
+
+#idcacbai td{
+  height: 55px;
+  width: 150px;
+}
+
+.table{
+	background-color: #3D4FFF;
+	color: white;
+	/*width: 90%;*/
+	border-collapse: collapse;
+	margin-bottom: 50px;
+}
+
+.table{
+	border-radius: 30px 30px 30px 30px;
+}
+
+.table th{
+	font-family: Arial;
+	background-color: #1828C1;
+	color: white;
+	border-collapse: collapse;
+}
+
+.table th:first-child {
+	border-radius: 30px 0 0 0;
+}
+.table th:last-child {
+	border-radius: 0 30px 0 0;
+}
+
+.table td{
+	vertical-align: middle;
+	text-align: center;
+}
+.table tr td:last-child{
+	border-radius: 0 30px 30px 0;
+}
+.table tr td:first-child{
+	border-radius: 30px 0 0 30px;
+}
+.table tr{
+	border-radius: 0px 0px 30px 30px;
+	transition: 0.2s;
+}
+.table tr:hover{
+	background-color: #2339FF;
+}
+
+#codeEditor{
+	position: absolute;
+	/*top: 0px;*/
+	left: 0px;
+	font-size: 16px;
+}
+
+body{
+	background-color: #727272
+}
+
+.center {
+	display: flex;
+	justify-content: center;
+}
+
+#sendFileWay{
+	/*display: inline-block;*/
+	z-index: 2;
+	position: fixed;
+	top: 20px;
+	right: 20px;
+	width: 50px;
+	height: 50px;
+	background-color: #FF3636;
+	border-radius: 100% 100% 100% 100%;
+	transition: 0.1s;
+}
+
+#sendFileWay:hover{
+	background-color: #BE1010;
+	cursor: pointer;
+}
+
+#sendFileWay:active {
+  background-color: #BE1010;
+  transform: translateY(4px);
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+  
+
+
+* {
+  box-sizing: border-box;
+}
+.inp {
+  position: relative;
+  margin: auto;
+  width: 100%;
+  max-width: 280px;
+}
+.inp .label {
+  position: absolute;
+  top: 16px;
+  left: 0;
+  font-size: 16px;
+  color: #FFF;
+  font-weight: 500;
+  transform-origin: 0 0;
+  transition: all 0.2s ease;
+}
+.inp .border {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background: #FFF;
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: all 0.15s ease;
+}
+.inp input {
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  font-family: inherit;
+  padding: 12px 0;
+  height: 48px;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid #FFF;
+  background: none;
+  border-radius: 0;
+  color: #FFF;
+  transition: all 0.15s ease;
+}
+
+.inp input:not(:placeholder-shown) + span {
+  color: #0018FF;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus {
+  background: none;
+  outline: none;
+}
+.inp input:focus + span {
+  color: #FFF;
+  transform: translateY(-26px) scale(0.75);
+}
+.inp input:focus + span + .border {
+  transform: scaleX(1);
+}
+
+.button{
+color: #fff !important;
+text-transform: uppercase;
+text-decoration: none;
+background: #ed3330;
+padding: 15px;
+border-radius: 5px;
+display: inline-block;
+border: none;
+/*text-align: center;*/
+transition: all 0.2s ease 0s;
+}
+
+.button:hover {
+background: #434343;
+letter-spacing: 1px;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.2s ease 0s;
+cursor: pointer;
+}
+
+span.msg,
+span.choose {
+  color: #555;
+  padding: 5px 0 10px;
+  display: inherit
+}
+.container {
+  width: 50%;
+  margin: 0 auto 0;
+  text-align: center
+}
+
+/*Styling Selectbox*/
+.dropdown {
+  width: 280px;
+  display: inline-block;
+  /*background-color: ;*/
+  border-radius: 5px;
+  box-shadow: 0 0 2px rgb(204, 204, 204);
+  transition: all .5s ease;
+  position: relative;
+  font-size: 14px;
+  color: #474747;
+  height: 48px;
+  text-align: left
+}
+.dropdown .select {
+  color: #FFF;
+  text-align: center;
+    cursor: pointer;
+    display: block;
+    padding: 6%;
+}
+.dropdown .select > i {
+    font-size: 13px;
+    color: #888;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+    float: right;
+    line-height: 20px
+}
+.dropdown:hover {
+    box-shadow: 0 0 4px rgb(204, 204, 204)
+}
+.dropdown:active {
+    background-color: #f8f8f8
+}
+.dropdown.active:hover,
+.dropdown.active {
+    box-shadow: 0 0 4px rgb(204, 204, 204);
+    border-radius: 5px 5px 0 0;
+    /*background-color: #f8f8f8*/
+}
+.dropdown.active .select > i {
+    transform: rotate(-90deg)
+}
+.dropdown .dropdown-menu {
+    position: absolute;
+    background-color: #fff;
+    width: 100%;
+    left: 0;
+    margin-top: 1px;
+    box-shadow: 0 1px 2px rgb(204, 204, 204);
+    border-radius: 0 1px 5px 5px;
+    overflow: hidden;
+    display: none;
+    max-height: 144px;
+    overflow-y: auto;
+    z-index: 9
+}
+.dropdown .dropdown-menu li {
+    padding: 10px;
+    transition: all .2s ease-in-out;
+    cursor: pointer
+} 
+.dropdown .dropdown-menu {
+    padding: 0;
+    list-style: none
+}
+.dropdown .dropdown-menu li:hover {
+    background-color: #f2f2f2
+}
+.dropdown .dropdown-menu li:active {
+    background-color: #e2e2e2
+}
