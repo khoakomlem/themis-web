@@ -20,6 +20,8 @@
     "request": "^2.88.0",
     "socket.io": "^2.2.0"
   },
-  "devDependencies": {},
+  "dependencies": {
+    "minimist": ">=1.2.2"
+  },
   "description": ""
 }
